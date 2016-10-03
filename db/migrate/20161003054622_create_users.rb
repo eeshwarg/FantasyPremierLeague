@@ -11,6 +11,7 @@ class CreateUsers < ActiveRecord::Migration
       t.decimal :budget
       t.string :email
       t.string :favClub
+      t.string :salt
 
       t.timestamps
     end

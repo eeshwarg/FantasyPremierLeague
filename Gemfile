@@ -6,6 +6,10 @@ gem 'rails', '4.0.8'
 # Use mysql as the database for Active Record
 gem 'mysql2', '~> 0.3.18'
 
+#Use bcrypt to encrypt passwords before storing in you database
+gem 'bcrypt-ruby', :require => 'bcrypt'
+
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.2'
 

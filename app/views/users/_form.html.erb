@@ -12,36 +12,32 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :fName %><br>
+    <%= f.label :First_name %><br>
     <%= f.text_field :fName %>
   </div>
   <div class="field">
-    <%= f.label :lName %><br>
+    <%= f.label :Last_name %><br>
     <%= f.text_field :lName %>
   </div>
   <div class="field">
-    <%= f.label :username %><br>
+    <%= f.label :Username %><br>
     <%= f.text_field :username %>
   </div>
   <div class="field">
     <%= f.label :password %><br>
-    <%= f.text_field :password %>
+    <%= f.password_field :password %>
+  </div>
+  <div class="field">
+    <%= f.label :Confirm_password %><br>
+    <%= f.password_field :password_confirmation %><br>
   </div>
   <div class="field">
     <%= f.label :gender %><br>
     <%= f.text_field :gender %>
   </div>
   <div class="field">
-    <%= f.label :dob %><br>
+    <%= f.label :Date_of_birth %><br>
     <%= f.date_select :dob %>
-  </div>
-  <div class="field">
-    <%= f.label :age %><br>
-    <%= f.number_field :age %>
-  </div>
-  <div class="field">
-    <%= f.label :budget %><br>
-    <%= f.text_field :budget %>
   </div>
   <div class="field">
     <%= f.label :email %><br>

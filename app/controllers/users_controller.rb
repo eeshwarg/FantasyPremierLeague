@@ -37,6 +37,7 @@ class UsersController < ApplicationController
     end
   end
 
+
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update
@@ -69,6 +70,6 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:fName, :lName, :username, :password, :gender, :dob, :age, :budget, :email, :favClub)
+      params.require(:user).permit(:fName, :lName, :username, :password, :gender, :dob, :email, :favClub, :password_confirmation)
     end
 end
