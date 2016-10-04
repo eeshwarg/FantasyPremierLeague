@@ -1,6 +1,16 @@
 FantasyPremierLeague::Application.routes.draw do
-  resources :users
-  root 'users#new'
+  get "sessions/login"
+  post "/login" => 'sessions#login'
+  post "sessions/login" => 'sessions#login'
+  get "sessions/home"
+  get "sessions/profile"
+  get "sessions/settings"
+  post "login_attempt", :to => "sessions#login_attempt"
+  post "sessions/logout"
+  resources :users, :sessions
+  root 'sessions#login'
+  get '/new' => 'users#new'
+  post '/new' => 'users#new'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

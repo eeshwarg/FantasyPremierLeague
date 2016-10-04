@@ -1,0 +1,56 @@
+<html><head>
+  <meta http-equiv="content-type" content="text/html; charset=windows-1252">
+  <style>
+      #gk1 { position: absolute; visibility: visible; left: 100px; top:300px; z-index: 200; }
+      #gk2 { position: absolute; visibility: visible; left: 100px; top:390px; z-index: 200; }
+      #def1 { position: absolute; visibility: visible; left: 250px; top:200px; z-index: 200; }
+      #def2 { position: absolute; visibility: visible; left: 250px; top:280px; z-index: 200; }
+      #def3 { position: absolute; visibility: visible; left: 250px; top:360px; z-index: 200; }
+      #def4 { position: absolute; visibility: visible; left: 250px; top:440px; z-index: 200; }
+      #def5 { position: absolute; visibility: visible; left: 250px; top:520px; z-index: 200; }
+
+      #mid1 { position: absolute; visibility: visible; left: 400px; top:200px; z-index: 200; }
+      #mid2 { position: absolute; visibility: visible; left: 400px; top:280px; z-index: 200; }
+      #mid3 { position: absolute; visibility: visible; left: 400px; top:360px; z-index: 200; }
+      #mid4 { position: absolute; visibility: visible; left: 400px; top:440px; z-index: 200; }
+      #mid5 { position: absolute; visibility: visible; left: 400px; top:520px; z-index: 200; }
+
+      #fwd1 { position: absolute; visibility: visible; left: 550px; top:280px; z-index: 200; }
+      #fwd2 { position: absolute; visibility: visible; left: 550px; top:360px; z-index: 200; }
+      #fwd3 { position: absolute; visibility: visible; left: 550px; top:440px; z-index: 200; }
+      #ff {position: absolute; z-index: 200;}
+  </style>
+</head>
+<body>
+
+<h1> Player Username</h1>
+<h3> Budget Remaining: </h3>
+<div>
+  <img id = 'ff' src="/images/football field.jpg" alt="Football Field Image">
+  <div id="gk1"> <button>Goalkeeper</button></div>
+  <div id="gk2"> <button>Goalkeeper</button></div>
+
+  <div id="def1"> <button>Defender</button></div>
+  <div id="def2"> <button>Defender</button></div>
+  <div id="def3"> <button>Defender</button></div>
+  <div id="def4"> <button>Defender</button></div>
+  <div id="def5"> <button>Defender</button></div>
+
+  <div id="mid1"> <button>Midfielder</button></div>
+  <div id="mid2"> <button>Midfielder</button></div>
+  <div id="mid3"> <button>Midfielder</button></div>
+  <div id="mid4"> <button>Midfielder</button></div>
+  <div id="mid5"> <button>Midfielder</button></div>
+
+  <div id="fwd1"> <button>Forward</button></div>
+  <div id="fwd2"> <button>Forward</button></div>
+  <div id="fwd3"> <button>Forward</button></div>
+</div>
+
+<div id="logoutButton" style="position: absolute; top: 20px; right: 50px">
+  <%= button_to 'Logout', 'logout' %>
+</div>
+
+
+
+</body></html>
