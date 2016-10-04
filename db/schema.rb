@@ -11,7 +11,34 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161003054622) do
+ActiveRecord::Schema.define(version: 20161004094434) do
+
+  create_table "players", force: true do |t|
+    t.string   "fName"
+    t.string   "lName"
+    t.string   "position"
+    t.boolean  "isSuspended"
+    t.integer  "rating"
+    t.integer  "age"
+    t.integer  "value"
+    t.integer  "goals"
+    t.integer  "assists"
+    t.integer  "cleanSheets"
+    t.integer  "saves"
+    t.integer  "Team_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "players", ["Team_id"], name: "index_players_on_Team_id", using: :btree
+
+  create_table "teams", force: true do |t|
+    t.string   "name"
+    t.string   "homeGround"
+    t.string   "manager"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "fName"

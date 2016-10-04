@@ -7,9 +7,37 @@
     </database-info>
     <case-sensitivity plain-identifiers="exact" quoted-identifiers="exact"/>
     <schema name="" catalog="FantasyPremierLeague_development"/>
+    <table name="players" schema="" catalog="FantasyPremierLeague_development" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="fName" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="lName" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="position" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="isSuspended" sqlType="TINYINT" precision="3" scale="0" nullable="true" jdbcType="-6"/>
+      <column name="rating" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="age" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="value" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="goals" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="assists" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="cleanSheets" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="saves" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="Team_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="created_at" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <column name="updated_at" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <index name="index_players_on_Team_id" unique="false" columns="Team_id"/>
+    </table>
     <table name="schema_migrations" schema="" catalog="FantasyPremierLeague_development" type="TABLE">
       <column name="version" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
       <index name="unique_schema_migrations" unique="true" columns="version"/>
+    </table>
+    <table name="teams" schema="" catalog="FantasyPremierLeague_development" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="name" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="homeGround" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="manager" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="created_at" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <column name="updated_at" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <primary-key name="PRIMARY" columns="id"/>
     </table>
     <table name="users" schema="" catalog="FantasyPremierLeague_development" type="TABLE">
       <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>

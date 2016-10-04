@@ -1,4 +1,8 @@
 FantasyPremierLeague::Application.routes.draw do
+  resources :players
+
+  resources :teams
+
   get "sessions/login"
   post "/login" => 'sessions#login'
   post "sessions/login" => 'sessions#login'
