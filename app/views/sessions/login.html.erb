@@ -1,10 +1,67 @@
-<% @page_title = "UserAuth | Login" -%>
-<div class= "Sign_Form">
-  <h1>Log in</h1>
-  <%= form_tag(:action => 'login_attempt') do %>
-      <p>Username or Email:</br> <%= text_field_tag(:username_or_email) %></p>
-      <p>Password:</br> <%= password_field_tag :login_password %></p>
-      <%= submit_tag("Log In") %>
-  <% end %>
-  <%= button_to 'Create account', '/new' %>
-</div>
+<!DOCTYPE HTML>
+<html>
+<head>
+  <style>
+    .loginButton{
+        background-color: #5cb85c;
+        border-radius: 8px;
+    }
+    .signupButton{
+        background-color: #009fe8;
+        position: relative;
+        top: 10px;
+        border-radius: 8px;
+    }
+    .Sign_Form{
+        margin: auto;
+        width: 20%;
+        /*border: 3px solid #73AD21;*/
+        padding: 20px;
+        border: 3px solid green;
+        border-radius: 10px;
+        text-align: center;
+    }
+
+    .text_field input {
+        color: #383838;
+        /*font-weight: bold;*/
+        /*font-size: 24px;*/
+        padding: 10px;
+        border: 2px solid #999;
+        border-radius:2px;
+    }
+
+    /*#background{
+        background url("/images/Foggy_Forest_by_Jake_Stewart.jpg") no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        background-size: cover;
+    }      */
+  </style>
+</head>
+
+<body>
+
+    <% @page_title = "UserAuth | Login" -%>
+    <div class= "Sign_Form">
+      <h1>Sign in</h1>
+      <%= form_tag(:action => 'login_attempt') do %>
+          <div class="text_field">
+            <p>Username or Email</br> <%= text_field_tag(:username_or_email) %></p>
+            <p>Password</br> <%= password_field_tag :login_password %></p>
+          </div>
+
+          <%= submit_tag "Sign In", {:class => "loginButton" } %>
+      <% end %>
+      <div id="Button">
+        <%= button_to 'Create account', '/new', {:class => "signupButton" } %>
+      </div>
+
+
+    </div>
+
+</body>
+
+
+
+</html>

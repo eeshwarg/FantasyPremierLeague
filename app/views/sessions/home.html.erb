@@ -1,56 +1,140 @@
 <html><head>
   <meta http-equiv="content-type" content="text/html; charset=windows-1252">
   <style>
-      #gk1 { position: absolute; visibility: visible; left: 100px; top:300px; z-index: 200; }
-      #gk2 { position: absolute; visibility: visible; left: 100px; top:390px; z-index: 200; }
-      #def1 { position: absolute; visibility: visible; left: 250px; top:200px; z-index: 200; }
-      #def2 { position: absolute; visibility: visible; left: 250px; top:280px; z-index: 200; }
-      #def3 { position: absolute; visibility: visible; left: 250px; top:360px; z-index: 200; }
-      #def4 { position: absolute; visibility: visible; left: 250px; top:440px; z-index: 200; }
-      #def5 { position: absolute; visibility: visible; left: 250px; top:520px; z-index: 200; }
+      #gk { position: absolute; visibility: visible; left: 100px; top:260px; z-index: 200; }
+      #def1 { position: absolute; visibility: visible; left: 250px; top:100px; z-index: 200; }
+      #def2 { position: absolute; visibility: visible; left: 250px; top:180px; z-index: 200; }
+      #def3 { position: absolute; visibility: visible; left: 250px; top:260px; z-index: 200; }
+      #def4 { position: absolute; visibility: visible; left: 250px; top:340px; z-index: 200; }
+      #def5 { position: absolute; visibility: visible; left: 250px; top:420px; z-index: 200; }
 
-      #mid1 { position: absolute; visibility: visible; left: 400px; top:200px; z-index: 200; }
-      #mid2 { position: absolute; visibility: visible; left: 400px; top:280px; z-index: 200; }
-      #mid3 { position: absolute; visibility: visible; left: 400px; top:360px; z-index: 200; }
-      #mid4 { position: absolute; visibility: visible; left: 400px; top:440px; z-index: 200; }
-      #mid5 { position: absolute; visibility: visible; left: 400px; top:520px; z-index: 200; }
+      #mid1 { position: absolute; visibility: visible; left: 400px; top:100px; z-index: 200; }
+      #mid2 { position: absolute; visibility: visible; left: 400px; top:180px; z-index: 200; }
+      #mid3 { position: absolute; visibility: visible; left: 400px; top:260px; z-index: 200; }
+      #mid4 { position: absolute; visibility: visible; left: 400px; top:340px; z-index: 200; }
+      #mid5 { position: absolute; visibility: visible; left: 400px; top:420px; z-index: 200; }
 
-      #fwd1 { position: absolute; visibility: visible; left: 550px; top:280px; z-index: 200; }
-      #fwd2 { position: absolute; visibility: visible; left: 550px; top:360px; z-index: 200; }
-      #fwd3 { position: absolute; visibility: visible; left: 550px; top:440px; z-index: 200; }
+      #fwd1 { position: absolute; visibility: visible; left: 550px; top:220px; z-index: 200; }
+      #fwd2 { position: absolute; visibility: visible; left: 550px; top:300px; z-index: 200; }
       #ff {position: absolute; z-index: 200;}
+      #FieldView {position: relative; visibility: visible; top: 60px;}
+
+      /* Style the list */
+      ul.tab {
+          list-style-type: none;
+          margin: 0;
+          padding: 0;
+          overflow: hidden;
+          border: 1px solid #ccc;
+          background-color: #f1f1f1;
+      }
+
+      /* Float the list items side by side */
+      ul.tab li {float: left;}
+
+      /* Style the links inside the list items */
+      ul.tab li a {
+          display: inline-block;
+          color: black;
+          text-align: center;
+          padding: 14px 16px;
+          text-decoration: none;
+          transition: 0.3s;
+          font-size: 17px;
+      }
+
+      /* Change background color of links on hover */
+      ul.tab li a:hover {background-color: #ddd;}
+
+      /* Create an active/current tablink class */
+      ul.tab li a:focus, .active {background-color: #ccc;}
+
+      /* Style the tab content */
+      .tabcontent {
+          display: none;
+          padding: 6px 12px;
+          border: 1px solid #ccc;
+          border-top: none;
+      }
   </style>
 </head>
 <body>
 
-<h1> Player Username</h1>
-<h3> Budget Remaining: </h3>
-<div>
-  <img id = 'ff' src="/images/football field.jpg" alt="Football Field Image">
-  <div id="gk1"> <button>Goalkeeper</button></div>
-  <div id="gk2"> <button>Goalkeeper</button></div>
+<h2 class='User_Header'> <%= @current_user.username%> Profile </h2>
+<ul class="tab">
+  <li><a class="tablinks" onclick="openView(event, 'ListView')">List View</a></li>
+  <li><a class="tablinks" onclick="openView(event, 'FieldView')">Field View</a></li>
+</ul>
+<script>
+    function openView(evt, cityName) {
+        // Declare all variables
+        var i, tabcontent, tablinks;
 
+        // Get all elements with class="tabcontent" and hide them
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+
+        // Get all elements with class="tablinks" and remove the class "active"
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+
+        // Show the current tab, and add an "active" class to the link that opened the tab
+        document.getElementById(cityName).style.display = "block";
+        evt.currentTarget.className += " active";
+    }
+
+</script>
+<div id="FieldView" class="tabcontent">
+  <img id = "ff" src="/images/football field.jpg" alt="Football Field Image">
+  <div id="gk"> <button>Goalkeeper</button></div>
   <div id="def1"> <button>Defender</button></div>
   <div id="def2"> <button>Defender</button></div>
   <div id="def3"> <button>Defender</button></div>
   <div id="def4"> <button>Defender</button></div>
   <div id="def5"> <button>Defender</button></div>
-
   <div id="mid1"> <button>Midfielder</button></div>
   <div id="mid2"> <button>Midfielder</button></div>
   <div id="mid3"> <button>Midfielder</button></div>
   <div id="mid4"> <button>Midfielder</button></div>
   <div id="mid5"> <button>Midfielder</button></div>
-
   <div id="fwd1"> <button>Forward</button></div>
   <div id="fwd2"> <button>Forward</button></div>
-  <div id="fwd3"> <button>Forward</button></div>
 </div>
 
+<div id="ListView" class="tabcontent">
+  <h3>Goalkeepers</h3>
+  <ul>
+    <li>Player1</li>
+    <li>Player2</li>
+  </ul>
+  <h3>Defenders</h3>
+  <ul>
+    <li>Player1</li>
+    <li>Player2</li>
+    <li>Player3</li>
+    <li>Player4</li>
+    <li>Player5</li>
+  </ul>
+  <h3>Midfielders</h3>
+  <ul>
+    <li>Player1</li>
+    <li>Player2</li>
+    <li>Player3</li>
+    <li>Player4</li>
+    <li>Player5</li>
+  </ul>
+  <h3>Forwards</h3>
+  <ul>
+    <li>Player1</li>
+    <li>Player2</li>
+    <li>Player3</li>
+  </ul>
+</div>
 <div id="logoutButton" style="position: absolute; top: 20px; right: 50px">
   <%= button_to 'Logout', 'logout' %>
 </div>
-
-
-
 </body></html>

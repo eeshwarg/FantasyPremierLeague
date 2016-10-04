@@ -23,6 +23,10 @@
     <%= f.label :Username %><br>
     <%= f.text_field :username %>
   </div>
+    <div class="field">
+      <%= f.label :email_ID %><br>
+      <%= f.text_field :email %>
+    </div>
   <div class="field">
     <%= f.label :password %><br>
     <%= f.password_field :password %>
@@ -30,22 +34,6 @@
   <div class="field">
     <%= f.label :Confirm_password %><br>
     <%= f.password_field :password_confirmation %><br>
-  </div>
-  <div class="field">
-    <%= f.label :gender %><br>
-    <%= f.text_field :gender %>
-  </div>
-  <div class="field">
-    <%= f.label :Date_of_birth %><br>
-    <%= f.date_select :dob %>
-  </div>
-  <div class="field">
-    <%= f.label :email %><br>
-    <%= f.text_field :email %>
-  </div>
-  <div class="field">
-    <%= f.label :favClub %><br>
-    <%= f.text_field :favClub %>
   </div>
   <div class="actions">
     <%= f.submit %>

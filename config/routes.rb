@@ -3,8 +3,10 @@ FantasyPremierLeague::Application.routes.draw do
   post "/login" => 'sessions#login'
   post "sessions/login" => 'sessions#login'
   get "sessions/home"
+
   get "sessions/profile"
   get "sessions/settings"
+  get "login_attempt", :to => "sessions#login_attempt"
   post "login_attempt", :to => "sessions#login_attempt"
   post "sessions/logout"
   resources :users, :sessions
