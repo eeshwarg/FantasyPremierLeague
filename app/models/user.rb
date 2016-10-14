@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  before_save :encrypt_password
+  before_save :encrypt_password, :default_values
   EMAIL_REGEX = /\A[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\z/i
   validates :username, :presence => true, :uniqueness => true, :length => { :in => 3..20 }
   validates :email, :presence => true, :uniqueness => true, :format => EMAIL_REGEX
@@ -32,6 +32,10 @@ class User < ActiveRecord::Base
       self.salt = BCrypt::Engine.generate_salt
       self.password= BCrypt::Engine.hash_secret(password, salt)
     end
+  end
+
+  def default_values
+    self.budget = 1000
   end
 
 =begin

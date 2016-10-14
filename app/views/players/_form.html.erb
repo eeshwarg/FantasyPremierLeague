@@ -15,49 +15,19 @@
     <%= f.label :fName %><br>
     <%= f.text_field :fName %>
   </div>
-  <div class="field">
-    <%= f.label :lName %><br>
-    <%= f.text_field :lName %>
   </div>
   <div class="field">
     <%= f.label :position %><br>
     <%= f.text_field :position %>
   </div>
-  <div class="field">
-    <%= f.label :isSuspended %><br>
-    <%= f.check_box :isSuspended %>
-  </div>
-  <div class="field">
+  <!--<div class="field">
     <%= f.label :rating %><br>
-    <%= f.number_field :rating %>
+    <%= f.select :rating, (50..100) %>
   </div>
-  <div class="field">
-    <%= f.label :age %><br>
-    <%= f.number_field :age %>
-  </div>
-  <div class="field">
-    <%= f.label :value %><br>
-    <%= f.number_field :value %>
-  </div>
-  <div class="field">
-    <%= f.label :goals %><br>
-    <%= f.number_field :goals %>
-  </div>
-  <div class="field">
-    <%= f.label :assists %><br>
-    <%= f.number_field :assists %>
-  </div>
-  <div class="field">
-    <%= f.label :cleanSheets %><br>
-    <%= f.number_field :cleanSheets %>
-  </div>
-  <div class="field">
-    <%= f.label :saves %><br>
-    <%= f.number_field :saves %>
   </div>
   <div class="field">
     <%= f.label :Team_id %><br>
-    <%= f.text_field :Team_id %>
+    <%= f.collection_select :Team_id, Team.all, :id, :name, :prompt => 'Select team' %>-->
   </div>
   <div class="actions">
     <%= f.submit %>

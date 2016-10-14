@@ -1,2 +1,33 @@
 <h2 class='User_Header'> <%= @current_user.username%> Profile </h2>
 <%= button_to 'Logout', 'logout' %>
+
+<%= form_for(@current_user) do |f| %>
+    <% if @current_user.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@current_user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+          <ul>
+            <% @current_user.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <div class="field">
+      <%= f.label :Date_of_birth %><br>
+      <%= f.date_select :dob, :start_year => 1900, prompt: { day: 'Select day', month: 'Select month', year: 'Select year' } %>
+    </div>
+    <div class="field">
+      <%= f.label :Gender %><br>
+      <%= f.select :gender, ['Male', 'Female', 'Other'], :prompt => 'Select gender'  %>
+    </div>
+    <div class="field">
+      <%= f.label :Favourite_club %><br>
+      <%= f.collection_select :favClub, Team.all, :id, :name, prompt: 'Your favourite club' %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+<% end %>

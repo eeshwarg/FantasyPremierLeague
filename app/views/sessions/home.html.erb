@@ -1,7 +1,8 @@
 <html><head>
   <meta http-equiv="content-type" content="text/html; charset=windows-1252">
   <style>
-      #gk { position: absolute; visibility: visible; left: 100px; top:260px; z-index: 200; }
+      #gk1 { position: absolute; visibility: visible; left: 100px; top:220px; z-index: 200; }
+      #gk2 { position: absolute; visibility: visible; left: 100px; top:300px; z-index: 200; }
       #def1 { position: absolute; visibility: visible; left: 250px; top:100px; z-index: 200; }
       #def2 { position: absolute; visibility: visible; left: 250px; top:180px; z-index: 200; }
       #def3 { position: absolute; visibility: visible; left: 250px; top:260px; z-index: 200; }
@@ -14,8 +15,9 @@
       #mid4 { position: absolute; visibility: visible; left: 400px; top:340px; z-index: 200; }
       #mid5 { position: absolute; visibility: visible; left: 400px; top:420px; z-index: 200; }
 
-      #fwd1 { position: absolute; visibility: visible; left: 550px; top:220px; z-index: 200; }
-      #fwd2 { position: absolute; visibility: visible; left: 550px; top:300px; z-index: 200; }
+      #fwd1 { position: absolute; visibility: visible; left: 550px; top:180px; z-index: 200; }
+      #fwd2 { position: absolute; visibility: visible; left: 550px; top:260px; z-index: 200; }
+      #fwd3 { position: absolute; visibility: visible; left: 550px; top:340px; z-index: 200; }
       #ff {position: absolute; z-index: 200;}
       #FieldView {position: relative; visibility: visible; top: 60px;}
 
@@ -60,7 +62,7 @@
 </head>
 <body>
 
-<h2 class='User_Header'> <%= @current_user.username%> Profile </h2>
+<h2 class='User_Header'> <%= @current_user.username%> <%= link_to "Profile", sessions_profile_path %> </h2>
 <ul class="tab">
   <li><a class="tablinks" onclick="openView(event, 'ListView')">List View</a></li>
   <li><a class="tablinks" onclick="openView(event, 'FieldView')">Field View</a></li>
@@ -90,7 +92,8 @@
 </script>
 <div id="FieldView" class="tabcontent">
   <img id = "ff" src="/images/football field.jpg" alt="Football Field Image">
-  <div id="gk"> <button>Goalkeeper</button></div>
+  <div id="gk1"> <button>Goalkeeper</button></div>
+  <div id="gk2"> <button>Goalkeeper</button></div>
   <div id="def1"> <button>Defender</button></div>
   <div id="def2"> <button>Defender</button></div>
   <div id="def3"> <button>Defender</button></div>
@@ -103,6 +106,7 @@
   <div id="mid5"> <button>Midfielder</button></div>
   <div id="fwd1"> <button>Forward</button></div>
   <div id="fwd2"> <button>Forward</button></div>
+  <div id="fwd3"> <button>Forward</button></div>
 </div>
 
 <div id="ListView" class="tabcontent">
@@ -134,6 +138,9 @@
     <li>Player3</li>
   </ul>
 </div>
+<!--<div id="listPlayersButton" style="position: absolute; top 40px; right:50px">
+  <%= button_to 'View all players', '/players#index' %>
+</div>-->
 <div id="logoutButton" style="position: absolute; top: 20px; right: 50px">
   <%= button_to 'Logout', 'logout' %>
 </div>
