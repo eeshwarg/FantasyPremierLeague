@@ -12,7 +12,7 @@ class CreatePlayers < ActiveRecord::Migration
       t.integer :assists
       t.integer :cleanSheets
       t.integer :saves
-      t.references :Team, index: true
+      t.references :team, index: true
 
       t.timestamps
     end

@@ -7,6 +7,35 @@
     </database-info>
     <case-sensitivity plain-identifiers="exact" quoted-identifiers="exact"/>
     <schema name="" catalog="FantasyPremierLeague_development"/>
+    <table name="games" schema="" catalog="FantasyPremierLeague_development" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="date" sqlType="DATE" precision="10" scale="0" nullable="true" jdbcType="91"/>
+      <column name="aTeam_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="bTeam_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="aScore" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="bScore" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="created_at" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <column name="updated_at" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <index name="index_games_on_aTeam_id" unique="false" columns="aTeam_id"/>
+      <index name="index_games_on_bTeam_id" unique="false" columns="bTeam_id"/>
+    </table>
+    <table name="ownerships" schema="" catalog="FantasyPremierLeague_development" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="player_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="user_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="created_at" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <column name="updated_at" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <primary-key name="PRIMARY" columns="id"/>
+    </table>
+    <table name="participations" schema="" catalog="FantasyPremierLeague_development" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="player_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="game_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="created_at" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <column name="updated_at" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <primary-key name="PRIMARY" columns="id"/>
+    </table>
     <table name="players" schema="" catalog="FantasyPremierLeague_development" type="TABLE">
       <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
       <column name="fName" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
@@ -20,11 +49,11 @@
       <column name="assists" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
       <column name="cleanSheets" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
       <column name="saves" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
-      <column name="Team_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="team_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
       <column name="created_at" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
       <column name="updated_at" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
       <primary-key name="PRIMARY" columns="id"/>
-      <index name="index_players_on_Team_id" unique="false" columns="Team_id"/>
+      <index name="index_players_on_Team_id" unique="false" columns="team_id"/>
     </table>
     <table name="schema_migrations" schema="" catalog="FantasyPremierLeague_development" type="TABLE">
       <column name="version" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>

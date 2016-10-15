@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  date: 2016-10-15
+  aTeam_id: 
+  bTeam_id: 
+  aScore: 1
+  bScore: 1
+
+two:
+  date: 2016-10-15
+  aTeam_id: 
+  bTeam_id: 
+  aScore: 1
+  bScore: 1

@@ -11,7 +11,34 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161004094434) do
+ActiveRecord::Schema.define(version: 20161015175039) do
+
+  create_table "games", force: true do |t|
+    t.date     "date"
+    t.integer  "aTeam_id"
+    t.integer  "bTeam_id"
+    t.integer  "aScore"
+    t.integer  "bScore"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "games", ["aTeam_id"], name: "index_games_on_aTeam_id", using: :btree
+  add_index "games", ["bTeam_id"], name: "index_games_on_bTeam_id", using: :btree
+
+  create_table "ownerships", force: true do |t|
+    t.integer  "player_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "participations", force: true do |t|
+    t.integer  "player_id"
+    t.integer  "game_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "players", force: true do |t|
     t.string   "fName"
@@ -25,12 +52,12 @@ ActiveRecord::Schema.define(version: 20161004094434) do
     t.integer  "assists"
     t.integer  "cleanSheets"
     t.integer  "saves"
-    t.integer  "Team_id"
+    t.integer  "team_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "players", ["Team_id"], name: "index_players_on_Team_id", using: :btree
+  add_index "players", ["team_id"], name: "index_players_on_Team_id", using: :btree
 
   create_table "teams", force: true do |t|
     t.string   "name"

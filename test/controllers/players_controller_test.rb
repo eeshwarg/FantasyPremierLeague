@@ -18,7 +18,7 @@ class PlayersControllerTest < ActionController::TestCase
 
   test "should create player" do
     assert_difference('Player.count') do
-      post :create, player: { Team_id: @player.Team_id, age: @player.age, assists: @player.assists, cleanSheets: @player.cleanSheets, fName: @player.fName, goals: @player.goals, isSuspended: @player.isSuspended, lName: @player.lName, position: @player.position, rating: @player.rating, saves: @player.saves, value: @player.value }
+      post :create, player: { team_id: @player.Team_id, age: @player.age, assists: @player.assists, cleanSheets: @player.cleanSheets, fName: @player.fName, goals: @player.goals, isSuspended: @player.isSuspended, lName: @player.lName, position: @player.position, rating: @player.rating, saves: @player.saves, value: @player.value }
     end
 
     assert_redirected_to player_path(assigns(:player))
@@ -35,7 +35,7 @@ class PlayersControllerTest < ActionController::TestCase
   end
 
   test "should update player" do
-    patch :update, id: @player, player: { Team_id: @player.Team_id, age: @player.age, assists: @player.assists, cleanSheets: @player.cleanSheets, fName: @player.fName, goals: @player.goals, isSuspended: @player.isSuspended, lName: @player.lName, position: @player.position, rating: @player.rating, saves: @player.saves, value: @player.value }
+    patch :update, id: @player, player: { team_id: @player.Team_id, age: @player.age, assists: @player.assists, cleanSheets: @player.cleanSheets, fName: @player.fName, goals: @player.goals, isSuspended: @player.isSuspended, lName: @player.lName, position: @player.position, rating: @player.rating, saves: @player.saves, value: @player.value }
     assert_redirected_to player_path(assigns(:player))
   end
 

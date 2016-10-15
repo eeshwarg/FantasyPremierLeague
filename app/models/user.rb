@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  has_many :ownerships
+  has_many :players, :through => :ownerships
   before_save :encrypt_password, :default_values
   EMAIL_REGEX = /\A[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\z/i
   validates :username, :presence => true, :uniqueness => true, :length => { :in => 3..20 }

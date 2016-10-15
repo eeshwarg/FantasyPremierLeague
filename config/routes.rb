@@ -1,4 +1,6 @@
 FantasyPremierLeague::Application.routes.draw do
+  resources :games
+
   resources :players
 
   resources :teams
