@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Game:</strong>
+  <%= @safe.game %>
+</p>
+
+<p>
+  <strong>Stime:</strong>
+  <%= @safe.sTime %>
+</p>
+
+<p>
+  <strong>Player:</strong>
+  <%= @safe.player %>
+</p>
+
+<%= link_to 'Edit', edit_safe_path(@safe) %> |
+<%= link_to 'Back', saves_path %>

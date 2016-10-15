@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Game:</strong>
+  <%= @red_card.game %>
+</p>
+
+<p>
+  <strong>Rtime:</strong>
+  <%= @red_card.rTime %>
+</p>
+
+<p>
+  <strong>Player:</strong>
+  <%= @red_card.player %>
+</p>
+
+<%= link_to 'Edit', edit_red_card_path(@red_card) %> |
+<%= link_to 'Back', red_cards_path %>

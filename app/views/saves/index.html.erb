@@ -1,0 +1,31 @@
+<h1>Listing saves</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Game</th>
+      <th>Stime</th>
+      <th>Player</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @saves.each do |safe| %>
+      <tr>
+        <td><%= safe.game %></td>
+        <td><%= safe.sTime %></td>
+        <td><%= safe.player %></td>
+        <td><%= link_to 'Show', safe %></td>
+        <td><%= link_to 'Edit', edit_safe_path(safe) %></td>
+        <td><%= link_to 'Destroy', safe, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Safe', new_safe_path %>

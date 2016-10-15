@@ -1,0 +1,31 @@
+<h1>Listing red_cards</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Game</th>
+      <th>Rtime</th>
+      <th>Player</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @red_cards.each do |red_card| %>
+      <tr>
+        <td><%= red_card.game %></td>
+        <td><%= red_card.rTime %></td>
+        <td><%= red_card.player %></td>
+        <td><%= link_to 'Show', red_card %></td>
+        <td><%= link_to 'Edit', edit_red_card_path(red_card) %></td>
+        <td><%= link_to 'Destroy', red_card, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Red card', new_red_card_path %>

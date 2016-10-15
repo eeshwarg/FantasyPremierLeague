@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Game:</strong>
+  <%= @assist.game %>
+</p>
+
+<p>
+  <strong>Atime:</strong>
+  <%= @assist.aTime %>
+</p>
+
+<p>
+  <strong>Player:</strong>
+  <%= @assist.player %>
+</p>
+
+<%= link_to 'Edit', edit_assist_path(@assist) %> |
+<%= link_to 'Back', assists_path %>

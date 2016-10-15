@@ -1,4 +1,12 @@
 FantasyPremierLeague::Application.routes.draw do
+  resources :red_cards
+
+  resources :saves
+
+  resources :assists
+
+  resources :goals
+
   resources :games
 
   resources :players

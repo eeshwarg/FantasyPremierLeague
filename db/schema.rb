@@ -11,7 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161015175039) do
+ActiveRecord::Schema.define(version: 20161015180113) do
+
+  create_table "assists", force: true do |t|
+    t.integer  "game_id"
+    t.integer  "aTime"
+    t.integer  "player_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "assists", ["game_id"], name: "index_assists_on_game_id", using: :btree
+  add_index "assists", ["player_id"], name: "index_assists_on_player_id", using: :btree
 
   create_table "games", force: true do |t|
     t.date     "date"
@@ -25,6 +36,17 @@ ActiveRecord::Schema.define(version: 20161015175039) do
 
   add_index "games", ["aTeam_id"], name: "index_games_on_aTeam_id", using: :btree
   add_index "games", ["bTeam_id"], name: "index_games_on_bTeam_id", using: :btree
+
+  create_table "goals", force: true do |t|
+    t.integer  "game_id"
+    t.integer  "gTime"
+    t.integer  "player_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "goals", ["game_id"], name: "index_goals_on_game_id", using: :btree
+  add_index "goals", ["player_id"], name: "index_goals_on_player_id", using: :btree
 
   create_table "ownerships", force: true do |t|
     t.integer  "player_id"
@@ -58,6 +80,28 @@ ActiveRecord::Schema.define(version: 20161015175039) do
   end
 
   add_index "players", ["team_id"], name: "index_players_on_Team_id", using: :btree
+
+  create_table "red_cards", force: true do |t|
+    t.integer  "game_id"
+    t.integer  "rTime"
+    t.integer  "player_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "red_cards", ["game_id"], name: "index_red_cards_on_game_id", using: :btree
+  add_index "red_cards", ["player_id"], name: "index_red_cards_on_player_id", using: :btree
+
+  create_table "saves", force: true do |t|
+    t.integer  "game_id"
+    t.integer  "sTime"
+    t.integer  "player_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "saves", ["game_id"], name: "index_saves_on_game_id", using: :btree
+  add_index "saves", ["player_id"], name: "index_saves_on_player_id", using: :btree
 
   create_table "teams", force: true do |t|
     t.string   "name"
