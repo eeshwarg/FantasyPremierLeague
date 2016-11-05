@@ -30,4 +30,14 @@
     <div class="actions">
       <%= f.submit %>
     </div>
+
+    </br>
+
+    <% players = Ownership.where(:user_id => session[:user_id]) %>
+    <ul>
+      <% players.each do |player| %>
+      <li> <%= Player.find_by_id(player.player_id).full_name %> </li>
+      <% end %>
+    </ul>
+
 <% end %>

@@ -1,6 +1,6 @@
 <h1>Listing games</h1>
 
-<table>
+<table id="games_table">
   <thead>
     <tr>
       <th>Date</th>
@@ -31,5 +31,7 @@
 </table>
 
 <br>
+
+<%= link_to 'Add game', new_game_path, id: "new_game_link", remote: true %>
 
 <%= link_to 'New Game', new_game_path %>

@@ -63,6 +63,7 @@
 <body>
 
 <h2 class='User_Header'> <%= @current_user.username%> <%= link_to "Profile", sessions_profile_path %> </h2>
+<%= flash[:notice] %>
 <ul class="tab">
   <li><a class="tablinks" onclick="openView(event, 'ListView')">List View</a></li>
   <li><a class="tablinks" onclick="openView(event, 'FieldView')">Field View</a></li>
@@ -91,53 +92,56 @@
 
 </script>
 <div id="FieldView" class="tabcontent">
-  <img id = "ff" src="/images/football field.jpg" alt="Football Field Image">
-  <div id="gk1"> <button>Goalkeeper</button></div>
-  <div id="gk2"> <button>Goalkeeper</button></div>
-  <div id="def1"> <button>Defender</button></div>
-  <div id="def2"> <button>Defender</button></div>
-  <div id="def3"> <button>Defender</button></div>
-  <div id="def4"> <button>Defender</button></div>
-  <div id="def5"> <button>Defender</button></div>
-  <div id="mid1"> <button>Midfielder</button></div>
-  <div id="mid2"> <button>Midfielder</button></div>
-  <div id="mid3"> <button>Midfielder</button></div>
-  <div id="mid4"> <button>Midfielder</button></div>
-  <div id="mid5"> <button>Midfielder</button></div>
-  <div id="fwd1"> <button>Forward</button></div>
-  <div id="fwd2"> <button>Forward</button></div>
-  <div id="fwd3"> <button>Forward</button></div>
+  <!--<img id = "ff" src="/images/football field.jpg" alt="Football Field Image">-->
+  <div id="gk1"> <%= button_to 'Add goalkeeper', fetch_players_path(:position => :GK), id: "players_list_link", remote: true, :method => :get %></div>
+  <div id="gk2"> <%= button_to 'Add goalkeeper', fetch_players_path(:position => :GK), id: "players_list_link", remote: true, :method => :get %></div>
+  <div id="def1"> <%= button_to 'Add defender', fetch_players_path(:position => :DEF), id: "players_list_link", remote: true, :method => :get %></div>
+  <div id="def2"> <%= button_to 'Add defender', fetch_players_path(:position => :DEF), id: "players_list_link", remote: true, :method => :get %></div>
+  <div id="def3"> <%= button_to 'Add defender', fetch_players_path(:position => :DEF), id: "players_list_link", remote: true, :method => :get %></div>
+  <div id="def4"> <%= button_to 'Add defender', fetch_players_path(:position => :DEF), id: "players_list_link", remote: true, :method => :get %></div>
+  <div id="def5"> <%= button_to 'Add defender', fetch_players_path(:position => :DEF), id: "players_list_link", remote: true, :method => :get %></div>
+  <div id="mid1"> <%= button_to 'Add midfielder', fetch_players_path(:position => :MID), id: "players_list_link", remote: true, :method => :get %></div>
+  <div id="mid2"> <%= button_to 'Add midfielder', fetch_players_path(:position => :MID), id: "players_list_link", remote: true, :method => :get %></div>
+  <div id="mid3"> <%= button_to 'Add midfielder', fetch_players_path(:position => :MID), id: "players_list_link", remote: true, :method => :get %></div>
+  <div id="mid4"> <%= button_to 'Add midfielder', fetch_players_path(:position => :MID), id: "players_list_link", remote: true, :method => :get %></div>
+  <div id="mid5"> <%= button_to 'Add midfielder', fetch_players_path(:position => :MID), id: "players_list_link", remote: true, :method => :get %></div>
+  <div id="fwd1"> <%= button_to 'Add forward', fetch_players_path(:position => :FWD), id: "players_list_link", remote: true, :method => :get %></div>
+  <div id="fwd2"> <%= button_to 'Add forward', fetch_players_path(:position => :FWD), id: "players_list_link", remote: true, :method => :get %></div>
+  <div id="fwd3"> <%= button_to 'Add forward', fetch_players_path(:position => :FWD), id: "players_list_link", remote: true, :method => :get %></div>
+
 </div>
 
 <div id="ListView" class="tabcontent">
   <h3>Goalkeepers</h3>
   <ul>
-    <li>Player1</li>
-    <li>Player2</li>
+    <li><%= link_to 'Add goalkeeper', fetch_players_path(:position => :GK), id: "players_list_link", remote: true %></li>
+    <li><%= link_to 'Add goalkeeper', fetch_players_path(:position => :GK), id: "players_list_link", remote: true %></li>
   </ul>
   <h3>Defenders</h3>
   <ul>
-    <li>Player1</li>
-    <li>Player2</li>
-    <li>Player3</li>
-    <li>Player4</li>
-    <li>Player5</li>
+    <li><%= link_to 'Add defender', fetch_players_path(:position => :DEF), id: "players_list_link", remote: true %></li>
+    <li><%= link_to 'Add defender', fetch_players_path(:position => :DEF), id: "players_list_link", remote: true %></li>
+    <li><%= link_to 'Add defender', fetch_players_path(:position => :DEF), id: "players_list_link", remote: true %></li>
+    <li><%= link_to 'Add defender', fetch_players_path(:position => :DEF), id: "players_list_link", remote: true %></li>
+    <li><%= link_to 'Add defender', fetch_players_path(:position => :DEF), id: "players_list_link", remote: true %></li>
+
   </ul>
   <h3>Midfielders</h3>
   <ul>
-    <li>Player1</li>
-    <li>Player2</li>
-    <li>Player3</li>
-    <li>Player4</li>
-    <li>Player5</li>
+    <li><%= link_to 'Add midfielder', fetch_players_path(:position => :MID), id: "players_list_link", remote: true %></li>
+    <li><%= link_to 'Add midfielder', fetch_players_path(:position => :MID), id: "players_list_link", remote: true %></li>
+    <li><%= link_to 'Add midfielder', fetch_players_path(:position => :MID), id: "players_list_link", remote: true %></li>
+    <li><%= link_to 'Add midfielder', fetch_players_path(:position => :MID), id: "players_list_link", remote: true %></li>
+    <li><%= link_to 'Add midfielder', fetch_players_path(:position => :MID), id: "players_list_link", remote: true %></li>
   </ul>
   <h3>Forwards</h3>
   <ul>
-    <li>Player1</li>
-    <li>Player2</li>
-    <li>Player3</li>
+    <li><%= link_to 'Add forward', fetch_players_path(:position => :FWD), id: "players_list_link", remote: true %></li>
+    <li><%= link_to 'Add forward', fetch_players_path(:position => :FWD), id: "players_list_link", remote: true %></li>
+    <li><%= link_to 'Add forward', fetch_players_path(:position => :FWD), id: "players_list_link", remote: true %></li>
   </ul>
 </div>
+
 <!--<div id="listPlayersButton" style="position: absolute; top 40px; right:50px">
   <%= button_to 'View all players', '/players#index' %>
 </div>-->

@@ -1,0 +1,29 @@
+<h1>Listing players</h1>
+
+<table>
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th>Position</th>
+    <th>Rating</th>
+    <th>Age</th>
+    <th>Value</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @players.each do |player| %>
+      <tr>
+        <td><%= player.full_name %></td>
+        <td><%= player.position %></td>
+        <td><%= player.rating %></td>
+        <td><%= player.age %></td>
+        <td><%= player.value %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Player', new_player_path %>

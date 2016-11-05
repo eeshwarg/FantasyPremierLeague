@@ -5,6 +5,10 @@ class PlayersController < ApplicationController
   # GET /players.json
   def index
     @players = Player.all
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   # GET /players/1
@@ -58,6 +62,14 @@ class PlayersController < ApplicationController
     respond_to do |format|
       format.html { redirect_to players_url }
       format.json { head :no_content }
+    end
+  end
+
+  def fetch_players
+    @selected = Player.where(:position => params[:position])
+    respond_to do |format|
+      format.html
+      format.js
     end
   end
 

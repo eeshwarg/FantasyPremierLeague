@@ -28,6 +28,11 @@ FantasyPremierLeague::Application.routes.draw do
   get '/new' => 'users#new'
   post '/new' => 'users#new'
 
+  get '/fetch_players' => 'players#fetch_players'
+
+  get '/buy_player' => 'users#buy_player'
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

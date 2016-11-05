@@ -4,3 +4,5 @@
 
 <%= link_to 'Show', @game %> |
 <%= link_to 'Back', games_path %>
+</br>
+<%= link_to 'Add goal', new_goal_path(:game_id => @game.id), id: 'new_goal_link', remote: true %>

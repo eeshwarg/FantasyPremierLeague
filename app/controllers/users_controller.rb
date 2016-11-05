@@ -31,8 +31,8 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
-        format.json { render action: 'show' , status: :created, location: @user }
+        format.html { redirect_to controller: 'sessions', action: 'home', :username_or_email => @user.username, :login_password => @user.password }
+        format.json { render action: 'sessions/home' , status: :created, location: @user }
       else
         format.html { render action: 'new' }
         format.json { render json: @user.errors, status: :unprocessable_entity }
@@ -62,6 +62,24 @@ class UsersController < ApplicationController
     respond_to do |format|
       format.html { redirect_to users_url }
       format.json { head :no_content }
+    end
+  end
+
+  def buy_player
+    selected_player = Player.find_by_id(params[:player_id])
+    @user = User.find session[:user_id]
+    if @user.budget >= selected_player.value
+      purchase = Ownership.new
+      purchase.player_id = selected_player.id
+      purchase.user_id = @user.id
+      purchase.save
+      @user.budget -= selected_player.value
+      #@user.save
+      flash[:notice] = "Successfully bought #{selected_player.full_name}!"
+      redirect_to controller: 'sessions', action: 'home'
+    else
+      flash[:notice] = "Sorry, you cannot buy this player"
+      redirect_to controller: 'sessions', action: 'home'
     end
   end
 

@@ -1,0 +1,17 @@
+$('#new_game').remove();
+$('#new_game_link').show();
+var table = document.getElementById('games_table');
+var row = table.insertRow(table.rows.length);
+var cell = new Array(8);
+for(var i=0;i<8;i++) {
+    cell[i] = row.insertCell(i);
+}
+
+cell[0].innerHTML = "<%= @game.date %>";
+cell[1].innerHTML = "<%= Team.find(@game.aTeam_id).name %>";
+cell[2].innerHTML = "<%= Team.find(@game.bTeam_id).name %>";
+cell[3].innerHTML = "<%= @game.aScore %>";
+cell[4].innerHTML = "<%= @game.bScore %>";
+cell[5].innerHTML = "<%= j link_to 'Show', @game %>";
+cell[6].innerHTML = "<%= j link_to 'Edit', edit_game_path(@game) %>";
+cell[7].innerHTML = "<%= j link_to 'Destroy', @game, method: :delete, data: { confirm: 'Are you sure?' } %>";

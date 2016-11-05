@@ -4,6 +4,7 @@ class GamesController < ApplicationController
   # GET /games
   # GET /games.json
   def index
+    sleep 1
     @games = Game.all
   end
 
@@ -30,6 +31,7 @@ class GamesController < ApplicationController
       if @game.save
         format.html { redirect_to @game, notice: 'Game was successfully created.' }
         format.json { render action: 'show', status: :created, location: @game }
+        format.js
       else
         format.html { render action: 'new' }
         format.json { render json: @game.errors, status: :unprocessable_entity }
