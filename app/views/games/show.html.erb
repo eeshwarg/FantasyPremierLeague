@@ -7,12 +7,12 @@
 
 <p>
   <strong>Ateam:</strong>
-  <%= @game.aTeam %>
+  <%= Team.find_by_id(@game.aTeam_id).name %>
 </p>
 
 <p>
   <strong>Bteam:</strong>
-  <%= @game.bTeam %>
+  <%= Team.find_by_id(@game.bTeam_id).name %>
 </p>
 
 <p>
@@ -27,3 +27,8 @@
 
 <%= link_to 'Edit', edit_game_path(@game) %> |
 <%= link_to 'Back', games_path %>
+</br>
+<%= link_to 'Add goal', new_goal_path(:game_id => @game.id), id: 'new_goal_link', remote: true %>
+<%= link_to 'Add assist', new_assist_path(:game_id => @game.id), id: 'new_assist_link', remote: true %>
+<%= link_to 'Add save', new_safe_path(:game_id => @game.id), id: 'new_save_link', remote: true %>
+<%= link_to 'Add red card', new_red_card_path(:game_id => @game.id), id: 'new_red_card_link', remote: true %>

@@ -15,6 +15,7 @@ class SavesController < ApplicationController
   # GET /saves/new
   def new
     @safe = Safe.new
+    @safe.game_id = params[:game_id]
   end
 
   # GET /saves/1/edit
@@ -26,10 +27,16 @@ class SavesController < ApplicationController
   def create
     @safe = Safe.new(safe_params)
 
+    @safe.save
+    player = Player.find_by_id(@safe.player_id)
+    player.saves += 1
+    player.save
+
     respond_to do |format|
       if @safe.save
-        format.html { redirect_to @safe, notice: 'Safe was successfully created.' }
+        format.html { redirect_to @safe, notice: 'Save was successfully created.' }
         format.json { render action: 'show', status: :created, location: @safe }
+        format.js { redirect_to game_path(@safe.player_id), notice: 'Save was successfully created.' }
       else
         format.html { render action: 'new' }
         format.json { render json: @safe.errors, status: :unprocessable_entity }

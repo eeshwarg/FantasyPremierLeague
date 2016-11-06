@@ -15,6 +15,7 @@ class AssistsController < ApplicationController
   # GET /assists/new
   def new
     @assist = Assist.new
+    @assist.game_id = params[:game_id]
   end
 
   # GET /assists/1/edit
@@ -26,10 +27,16 @@ class AssistsController < ApplicationController
   def create
     @assist = Assist.new(assist_params)
 
+    @assist.save
+    player = Player.find_by_id(@assist.player_id)
+    player.assists += 1
+    player.save
+
     respond_to do |format|
       if @assist.save
         format.html { redirect_to @assist, notice: 'Assist was successfully created.' }
         format.json { render action: 'show', status: :created, location: @assist }
+        format.js { redirect_to game_path(@assist.game_id), notice: 'Assist was successfully created.' }
       else
         format.html { render action: 'new' }
         format.json { render json: @assist.errors, status: :unprocessable_entity }

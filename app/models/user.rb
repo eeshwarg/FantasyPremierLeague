@@ -40,6 +40,9 @@ class User < ActiveRecord::Base
     self.budget = 1000
   end
 
+  def full_name
+    [fName, lName].join(' ')
+  end
 =begin
   def age
     now = Time.now.utc.to_date

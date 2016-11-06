@@ -62,7 +62,7 @@
 </head>
 <body>
 
-<h2 class='User_Header'> <%= @current_user.username%> <%= link_to "Profile", sessions_profile_path %> </h2>
+<h2 class='User_Header'> <%= @current_user.username%> <%= link_to "Settings", sessions_settings_path %> </h2>
 <%= flash[:notice] %>
 <ul class="tab">
   <li><a class="tablinks" onclick="openView(event, 'ListView')">List View</a></li>
@@ -112,7 +112,15 @@
 </div>
 
 <div id="ListView" class="tabcontent">
-  <h3>Goalkeepers</h3>
+  <% players = Ownership.find_all_by_user_id(session[:user_id]) %>
+  <ul>
+    <% players.each do |player| %>
+        <% p = Player.find_by_id(player.player_id) %>
+        <li><%= link_to p.full_name, player_path(player.player_id) %></li>
+    <% end %>
+  </ul>
+
+  <!--<h3>Goalkeepers</h3>
   <ul>
     <li><%= link_to 'Add goalkeeper', fetch_players_path(:position => :GK), id: "players_list_link", remote: true %></li>
     <li><%= link_to 'Add goalkeeper', fetch_players_path(:position => :GK), id: "players_list_link", remote: true %></li>
@@ -139,7 +147,7 @@
     <li><%= link_to 'Add forward', fetch_players_path(:position => :FWD), id: "players_list_link", remote: true %></li>
     <li><%= link_to 'Add forward', fetch_players_path(:position => :FWD), id: "players_list_link", remote: true %></li>
     <li><%= link_to 'Add forward', fetch_players_path(:position => :FWD), id: "players_list_link", remote: true %></li>
-  </ul>
+  </ul>-->
 </div>
 
 <!--<div id="listPlayersButton" style="position: absolute; top 40px; right:50px">

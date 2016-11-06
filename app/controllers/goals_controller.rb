@@ -27,11 +27,16 @@ class GoalsController < ApplicationController
   def create
     @goal = Goal.new(goal_params)
 
+    @goal.save
+    player = Player.find_by_id(@goal.player_id)
+    player.goals += 1
+    player.save
+
     respond_to do |format|
       if @goal.save
         format.html { redirect_to @goal, notice: 'Goal was successfully created.' }
         format.json { render action: 'show', status: :created, location: @goal }
-        format.js
+        format.js { redirect_to game_path(@goal.game_id), notice: 'Goal was successfully created.' }
       else
         format.html { render action: 'new' }
         format.json { render json: @goal.errors, status: :unprocessable_entity }

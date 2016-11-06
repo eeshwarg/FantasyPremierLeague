@@ -15,6 +15,7 @@ class RedCardsController < ApplicationController
   # GET /red_cards/new
   def new
     @red_card = RedCard.new
+    @red_card.game_id = params[:game_id]
   end
 
   # GET /red_cards/1/edit
@@ -30,6 +31,7 @@ class RedCardsController < ApplicationController
       if @red_card.save
         format.html { redirect_to @red_card, notice: 'Red card was successfully created.' }
         format.json { render action: 'show', status: :created, location: @red_card }
+        format.js { redirect_to @red_card, notice: 'Red card was successfully created.'}
       else
         format.html { render action: 'new' }
         format.json { render json: @red_card.errors, status: :unprocessable_entity }

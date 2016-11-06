@@ -46,7 +46,14 @@ class UsersController < ApplicationController
   def update
     respond_to do |format|
       if @user.update(user_params)
-        format.html { redirect_to @user, notice: 'User was successfully updated.' }
+        now = Time.now
+        dob = @user.dob
+        age = now.year - dob.year
+        if dob.month > now.month or (dob.month == now.month and dob.day > now.day)
+          age = age - 1
+        end
+        @user.update_column(:age, age)
+        format.html { redirect_to sessions_profile_path, notice: 'User was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -67,18 +74,19 @@ class UsersController < ApplicationController
 
   def buy_player
     selected_player = Player.find_by_id(params[:player_id])
-    @user = User.find session[:user_id]
-    if @user.budget >= selected_player.value
+    user = User.find session[:user_id]
+    #h = Hash[:p => selected_player, :u => user]
+    if user.budget >= selected_player.value
       purchase = Ownership.new
       purchase.player_id = selected_player.id
-      purchase.user_id = @user.id
+      purchase.user_id = user.id
+      reduced_budget = user.budget - selected_player.value
+      user.update_column(:budget, reduced_budget)
       purchase.save
-      @user.budget -= selected_player.value
-      #@user.save
       flash[:notice] = "Successfully bought #{selected_player.full_name}!"
       redirect_to controller: 'sessions', action: 'home'
     else
-      flash[:notice] = "Sorry, you cannot buy this player"
+      flash[:notice] = "Sorry, you do not have sufficient funds to buy this player"
       redirect_to controller: 'sessions', action: 'home'
     end
   end

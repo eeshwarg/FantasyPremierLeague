@@ -1,4 +1,45 @@
-<h1>Sessions#settings</h1>
-<p>Find me in app/views/sessions/settings.html.erb</p>
+<%= form_for(@current_user) do |f| %>
+    <% if @current_user.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@current_user.errors.count, "error") %> prohibited this user from being saved:</h2>
 
-<%= button_to 'Logout', 'logout' %>
+          <ul>
+            <% @current_user.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <div class="field">
+      <%= f.label :First_name %><br>
+      <%= f.text_field :fName %>
+    </div>
+    <div class="field">
+      <%= f.label :Last_name %><br>
+      <%= f.text_field :lName %>
+    </div>
+    <div class="field">
+      <%= f.label :Username %><br>
+      <%= f.text_field :username %>
+    </div>
+    <div class="field">
+      <%= f.label :email_ID %><br>
+      <%= f.text_field :email %>
+    </div>
+    <div class="field">
+      <%= f.label :Date_of_birth %><br>
+      <%= f.date_select :dob, :start_year => 1900, prompt: { day: 'Select day', month: 'Select month', year: 'Select year' } %>
+    </div>
+    <div class="field">
+      <%= f.label :Gender %><br>
+      <%= f.select :gender, ['Male', 'Female', 'Other'], :prompt => 'Select gender'  %>
+    </div>
+    <div class="field">
+      <%= f.label :Favourite_club %><br>
+      <%= f.collection_select :favClub, Team.all, :id, :name, prompt: 'Your favourite club' %>
+    </div>
+    <div class="actions">
+      <%= f.submit 'Update profile' %>
+    </div>
+<% end %>

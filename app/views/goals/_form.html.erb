@@ -11,7 +11,11 @@
     </div>
   <% end %>
 
-    <%= @goal.game_id = params[:game_id] %>
+
+  <div class="field">
+    <%= f.label :game_ID %><br>
+    <%= f.number_field :game_id %>
+  </div>
   <div class="field">
     <%= f.label :gTime %><br>
     <%= f.number_field :gTime %>

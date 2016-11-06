@@ -3,8 +3,7 @@
 <table>
   <thead>
     <tr>
-      <th>Fname</th>
-      <th>Lname</th>
+      <th>Name</th>
       <th>Position</th>
       <th>Issuspended</th>
       <th>Rating</th>
@@ -24,8 +23,7 @@
   <tbody>
     <% @players.each do |player| %>
       <tr>
-        <td><%= player.fName %></td>
-        <td><%= player.lName %></td>
+        <td><%= player.full_name %></td>
         <td><%= player.position %></td>
         <td><%= player.isSuspended %></td>
         <td><%= player.rating %></td>
@@ -35,7 +33,8 @@
         <td><%= player.assists %></td>
         <td><%= player.cleanSheets %></td>
         <td><%= player.saves %></td>
-        <td><%= player.Team %></td>
+        <% team = Team.find(player.team_id) %>
+        <td><%= team.name %></td>
         <td><%= link_to 'Show', player %></td>
         <td><%= link_to 'Edit', edit_player_path(player) %></td>
         <td><%= link_to 'Destroy', player, method: :delete, data: { confirm: 'Are you sure?' } %></td>

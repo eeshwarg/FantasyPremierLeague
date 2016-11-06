@@ -15,9 +15,9 @@
   <tbody>
     <% @goals.each do |goal| %>
       <tr>
-        <td><%= goal.game %></td>
+        <td><%= goal.game_id %></td>
         <td><%= goal.gTime %></td>
-        <td><%= goal.player %></td>
+        <td><%= goal.player_id %></td>
         <td><%= link_to 'Show', goal %></td>
         <td><%= link_to 'Edit', edit_goal_path(goal) %></td>
         <td><%= link_to 'Destroy', goal, method: :delete, data: { confirm: 'Are you sure?' } %></td>
