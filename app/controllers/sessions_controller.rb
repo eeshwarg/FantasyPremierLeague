@@ -20,6 +20,25 @@ class SessionsController < ApplicationController
   end
 
   def home
+    owns = Ownership.find_all_by_user_id(session[:user_id])
+    gks = []
+    defs = []
+    mids = []
+    fwds = []
+    owns.each do |own|
+      player = Player.find(own.player_id)
+      case player.position
+        when "GK"
+          gks.append(player)
+        when "DEF"
+          defs.append(player)
+        when "MID"
+          mids.append(player)
+        when "FWD"
+          fwds.append(player)
+      end
+    end
+    render :locals => {:gks => gks, :defs => defs, :mids => mids, :fwds => fwds}
   end
 
   def profile

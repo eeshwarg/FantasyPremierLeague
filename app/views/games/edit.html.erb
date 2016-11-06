@@ -2,7 +2,8 @@
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @game %> |
-<%= link_to 'Back', games_path %>
 </br>
 <%= link_to 'Add goal', new_goal_path(:game_id => @game.id), id: 'new_goal_link', remote: true %>
+<%= link_to 'Add assist', new_assist_path(:game_id => @game.id), id: 'new_assist_link', remote: true %>
+<%= link_to 'Add save', new_safe_path(:game_id => @game.id), id: 'new_save_link', remote: true %>
+<%= link_to 'Add red card', new_red_card_path(:game_id => @game.id), id: 'new_red_card_link', remote: true %>

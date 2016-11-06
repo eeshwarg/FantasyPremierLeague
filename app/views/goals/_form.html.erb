@@ -18,7 +18,7 @@
   </div>
   <div class="field">
     <%= f.label :gTime %><br>
-    <%= f.number_field :gTime %>
+    <%= f.select :gTime, options_for_select((1..90).to_a.map{|s| ["#{s}", s]}) %>
   </div>
   <div class="field">
     <%= f.label :player_id %><br>
