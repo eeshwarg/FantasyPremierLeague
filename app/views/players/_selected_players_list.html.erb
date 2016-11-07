@@ -1,29 +1,48 @@
-<h1>Listing players</h1>
+<!-- Modal -->
+  <div class="modal-dialog">
 
-<table>
-  <thead>
-  <tr>
-    <th>Name</th>
-    <th>Position</th>
-    <th>Rating</th>
-    <th>Age</th>
-    <th>Value</th>
-  </tr>
-  </thead>
+<!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Modal Header</h4>
+      </div>
+      <div class="modal-body">
+        <h1>Listing players</h1>
 
-  <tbody>
-  <% @selected.each do |player| %>
-      <tr>
-        <td><%= link_to player.full_name, controller: "players", action: "show", :id => player.id %></td>
-        <td><%= player.position %></td>
-        <td><%= player.rating %></td>
-        <td><%= player.age %></td>
-        <td><%= player.value %></td>
-      </tr>
-  <% end %>
-  </tbody>
-</table>
+        <table>
+          <thead>
+          <tr>
+            <th>Name</th>
+            <th>Position</th>
+            <th>Rating</th>
+            <th>Age</th>
+            <th>Value</th>
+          </tr>
+          </thead>
 
-<br>
+          <tbody>
+          <% @selected.each do |player| %>
 
-<%= link_to 'New Player', new_player_path if User.authenticate %>
+              <tr>
+                <td><%= link_to player.full_name, controller: "players", action: "show", :id => player.id %></td>
+                <td><%= player.position %></td>
+                <td><%= player.rating %></td>
+                <td><%= player.age %></td>
+                <td><%= player.value %></td>
+              </tr>
+          <% end %>
+          </tbody>
+        </table>
+
+        <br>
+
+        <%= link_to 'New Player', new_player_path if User.authenticate %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+

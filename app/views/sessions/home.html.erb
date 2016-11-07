@@ -1,3 +1,4 @@
+
 <html><head>
   <meta http-equiv="content-type" content="text/html; charset=windows-1252">
   <style>
@@ -66,11 +67,11 @@
 </head>
 <body>
 
-<h2 class='User_Header'> <%= @current_user.username%> <%= link_to "Settings", sessions_settings_path %> </h2>
+<h2 class='User_Header'> <%= @current_user.username%> <%= link_to "Profile", sessions_profile_path %> </h2>
 <%= flash[:notice] %>
 <ul class="tab">
   <li><a class="tablinks" onclick="openView(event, 'ListView')">List View</a></li>
-  <li><a class="tablinks" onclick="openView(event, 'FieldView')">Field View</a></li>
+  <li><a class="tablinks" id="defaultOpen" onclick="openView(event, 'FieldView')">Field View</a></li>
 </ul>
 <script>
     function openView(evt, cityName) {
@@ -94,6 +95,7 @@
         evt.currentTarget.className += " active";
     }
 
+    document.getElementById("defaultOpen").click();
 </script>
 <div id="FieldView" class="tabcontent">
   <!--<img id = "ff" src="/images/football field.jpg" alt="Football Field Image">-->
@@ -101,94 +103,101 @@
   </div>
 
   <% if gks[0] %>
-      <div id='gk1'> <%= gks[0].full_name %> </div>
+    <div id='gk1'> <%= gks[0].full_name %> </div>
   <% else %>
-      <div id="gk1"> <%= button_to 'Add goalkeeper', fetch_players_path(:position => :GK), remote: true, :method => :get %></div>
+    <div id="gk1"> <%= button_to 'Add goalkeeper', fetch_players_path(:position => :GK), remote: true, 'data-toggle' =>  "modal", 'data-target' => '#myModal', :method => :get %></div>
   <% end %>
 
   <% if gks[1] %>
-      <div id='gk2'> <%= gks[1].full_name %> </div>
+    <div id='gk2'> <%= gks[1].full_name %> </div>
   <% else %>
-      <div id="gk2"> <%= button_to 'Add goalkeeper', fetch_players_path(:position => :GK), remote: true, :method => :get %></div>
+    <div id="gk2"> <%= button_to 'Add goalkeeper', fetch_players_path(:position => :GK), remote: true, 'data-toggle' =>  "modal", 'data-target' => '#myModal', :method => :get %></div>
   <% end %>
 
   <% if defs[0] %>
-      <div id='def1'> <%= defs[0].full_name %> </div>
+    <div id='def1'> <%= defs[0].full_name %> </div>
   <% else %>
-      <div id='def1'> <%= button_to 'Add defender', fetch_players_path(:position => :DEF), remote: true, :method => :get %></div>
+    <div id="def1"> <%= button_to 'Add defender', fetch_players_path(:position => :DEF), remote: true, 'data-toggle' =>  "modal", 'data-target' => '#myModal', :method => :get %></div>
   <% end %>
 
   <% if defs[1] %>
       <div id='def2'> <%= defs[1].full_name %> </div>
-  <% else %>
-      <div id='def2'> <%= button_to 'Add defender', fetch_players_path(:position => :DEF), remote: true, :method => :get %></div>
-  <% end %>
+    <% else %>
+      <div id="def2"> <%= button_to 'Add defender', fetch_players_path(:position => :DEF), remote: true, 'data-toggle' =>  "modal", 'data-target' => '#myModal', :method => :get %></div>
+    <% end %>
 
   <% if defs[2] %>
-      <div id='def3'> <%= defs[2].full_name %> </div>
-  <% else %>
-      <div id='def3'> <%= button_to 'Add defender', fetch_players_path(:position => :DEF), remote: true, :method => :get %></div>
-  <% end %>
+        <div id='def3'> <%= defs[2].full_name %> </div>
+      <% else %>
+        <div id="def3"> <%= button_to 'Add defender', fetch_players_path(:position => :DEF), remote: true, 'data-toggle' =>  "modal", 'data-target' => '#myModal', :method => :get %></div>
+      <% end %>
 
   <% if defs[3] %>
-      <div id='def4'> <%= defs[3].full_name %> </div>
-  <% else %>
-      <div id='def4'> <%= button_to 'Add defender', fetch_players_path(:position => :DEF), remote: true, :method => :get %></div>
-  <% end %>
+        <div id='def4'> <%= defs[3].full_name %> </div>
+          <% else %>
+            <div id="def4"> <%= button_to 'Add defender', fetch_players_path(:position => :DEF), remote: true, 'data-toggle' =>  "modal", 'data-target' => '#myModal', :method => :get %></div>
+          <% end %>
 
   <% if defs[4] %>
-      <div id='def5'> <%= defs[4].full_name %> </div>
-  <% else %>
-      <div id='def5'> <%= button_to 'Add defender', fetch_players_path(:position => :DEF), remote: true, :method => :get %></div>
-  <% end %>
+        <div id='def5'> <%= defs[4].full_name %> </div>
+          <% else %>
+            <div id="def5"> <%= button_to 'Add defender', fetch_players_path(:position => :DEF), remote: true, 'data-toggle' =>  "modal", 'data-target' => '#myModal', :method => :get %></div>
+          <% end %>
 
   <% if mids[0] %>
-      <div id='mid1'> <%= mids[0].full_name %> </div>
-  <% else %>
-      <div id='mid1'> <%= button_to 'Add midfielder', fetch_players_path(:position => :MID), remote: true, :method => :get %></div>
-  <% end %>
+        <div id='mid1'> <%= mids[0].full_name %> </div>
+          <% else %>
+            <div id="mid1"> <%= button_to 'Add midfielder', fetch_players_path(:position => :MID), remote: true, 'data-toggle' =>  "modal", 'data-target' => '#myModal', :method => :get %></div>
+          <% end %>
+
 
   <% if mids[1] %>
-      <div id='mid2'> <%= mids[1].full_name %> </div>
-  <% else %>
-      <div id='mid2'> <%= button_to 'Add midfielder', fetch_players_path(:position => :MID), remote: true, :method => :get %></div>
-  <% end %>
+        <div id='mid2'> <%= mids[1].full_name %> </div>
+          <% else %>
+            <div id="mid2"> <%= button_to 'Add midfielder', fetch_players_path(:position => :MID), remote: true, 'data-toggle' =>  "modal", 'data-target' => '#myModal', :method => :get %></div>
+          <% end %>
 
   <% if mids[2] %>
-      <div id='mid3'> <%= mids[2].full_name %> </div>
-  <% else %>
-      <div id='mid3'> <%= button_to 'Add midfielder', fetch_players_path(:position => :MID), remote: true, :method => :get %></div>
-  <% end %>
+        <div id='mid3'> <%= mids[2].full_name %> </div>
+          <% else %>
+            <div id="mid3"> <%= button_to 'Add midfielder', fetch_players_path(:position => :MID), remote: true, 'data-toggle' =>  "modal", 'data-target' => '#myModal', :method => :get %></div>
+          <% end %>
+
 
   <% if mids[3] %>
-      <div id='mid4'> <%= mids[3].full_name %> </div>
-  <% else %>
-      <div id='mid4'> <%= button_to 'Add midfielder', fetch_players_path(:position => :MID), remote: true, :method => :get %></div>
-  <% end %>
+        <div id='mid4'> <%= mids[3].full_name %> </div>
+          <% else %>
+            <div id="mid4"> <%= button_to 'Add midfielder', fetch_players_path(:position => :MID), remote: true, 'data-toggle' =>  "modal", 'data-target' => '#myModal', :method => :get %></div>
+          <% end %>
 
   <% if mids[4] %>
-      <div id='mid5'> <%= mids[4].full_name %> </div>
-  <% else %>
-      <div id='mid5'> <%= button_to 'Add midfielder', fetch_players_path(:position => :MID), remote: true, :method => :get %></div>
-  <% end %>
+       <div id='mid5'> <%= mids[4].full_name %> </div>
+         <% else %>
+           <div id="mid5"> <%= button_to 'Add midfielder', fetch_players_path(:position => :MID), remote: true, 'data-toggle' =>  "modal", 'data-target' => '#myModal', :method => :get %></div>
+         <% end %>
 
-  <% if fwds[0] %>
-      <div id='fwd1'> <%= fwds[0].full_name %> </div>
-  <% else %>
-      <div id='fwd1'> <%= button_to 'Add forward', fetch_players_path(:position => :FWD), remote: true, :method => :get %></div>
-  <% end %>
+   <% if fwds[0] %>
+         <div id='fwd1'> <%= fwds[0].full_name %> </div>
+           <% else %>
+             <div id="fwd1"> <%= button_to 'Add forward', fetch_players_path(:position => :FWD), remote: true, 'data-toggle' =>  "modal", 'data-target' => '#myModal', :method => :get %></div>
+           <% end %>
+   <% if fwds[1] %>
+         <div id='fwd2'> <%= fwds[1].full_name %> </div>
+           <% else %>
+             <div id="fwd2"> <%= button_to 'Add forward', fetch_players_path(:position => :FWD), remote: true, 'data-toggle' =>  "modal", 'data-target' => '#myModal', :method => :get %></div>
+           <% end %>
+   <% if fwds[2] %>
+        <div id='fwd3'> <%= fwds[2].full_name %> </div>
+          <% else %>
+            <div id="fwd3"> <%= button_to 'Add forward', fetch_players_path(:position => :GK), remote: true, 'data-toggle' =>  "modal", 'data-target' => '#myModal', :method => :get %></div>
+          <% end %>
+<!-- Trigger the modal with a button -->
 
-  <% if fwds[1] %>
-      <div id='fwd2'> <%= fwds[1].full_name %> </div>
-  <% else %>
-      <div id='fwd2'> <%= button_to 'Add forward', fetch_players_path(:position => :FWD), remote: true, :method => :get %></div>
-  <% end %>
+<!--Modal -->
+<div id="myModal" class="modal fade" role="dialog">
 
-  <% if fwds[2] %>
-      <div id='fwd3'> <%= fwds[2].full_name %> </div>
-  <% else %>
-      <div id='fwd3'> <%= button_to 'Add forward', fetch_players_path(:position => :FWD), remote: true, :method => :get %></div>
-  <% end %>
+</div>
+
 
 
 </div>
@@ -225,39 +234,8 @@
 
   <%= button_to 'Sell player', list_players_path, :method => :get %>
 
-  <!--<h3>Goalkeepers</h3>
-  <ul>
-    <li><%= link_to 'Add goalkeeper', fetch_players_path(:position => :GK), id: "players_list_link", remote: true %></li>
-    <li><%= link_to 'Add goalkeeper', fetch_players_path(:position => :GK), id: "players_list_link", remote: true %></li>
-  </ul>
-  <h3>Defenders</h3>
-  <ul>
-    <li><%= link_to 'Add defender', fetch_players_path(:position => :DEF), id: "players_list_link", remote: true %></li>
-    <li><%= link_to 'Add defender', fetch_players_path(:position => :DEF), id: "players_list_link", remote: true %></li>
-    <li><%= link_to 'Add defender', fetch_players_path(:position => :DEF), id: "players_list_link", remote: true %></li>
-    <li><%= link_to 'Add defender', fetch_players_path(:position => :DEF), id: "players_list_link", remote: true %></li>
-    <li><%= link_to 'Add defender', fetch_players_path(:position => :DEF), id: "players_list_link", remote: true %></li>
-
-  </ul>
-  <h3>Midfielders</h3>
-  <ul>
-    <li><%= link_to 'Add midfielder', fetch_players_path(:position => :MID), id: "players_list_link", remote: true %></li>
-    <li><%= link_to 'Add midfielder', fetch_players_path(:position => :MID), id: "players_list_link", remote: true %></li>
-    <li><%= link_to 'Add midfielder', fetch_players_path(:position => :MID), id: "players_list_link", remote: true %></li>
-    <li><%= link_to 'Add midfielder', fetch_players_path(:position => :MID), id: "players_list_link", remote: true %></li>
-    <li><%= link_to 'Add midfielder', fetch_players_path(:position => :MID), id: "players_list_link", remote: true %></li>
-  </ul>
-  <h3>Forwards</h3>
-  <ul>
-    <li><%= link_to 'Add forward', fetch_players_path(:position => :FWD), id: "players_list_link", remote: true %></li>
-    <li><%= link_to 'Add forward', fetch_players_path(:position => :FWD), id: "players_list_link", remote: true %></li>
-    <li><%= link_to 'Add forward', fetch_players_path(:position => :FWD), id: "players_list_link", remote: true %></li>
-  </ul>-->
 </div>
 
-<!--<div id="listPlayersButton" style="position: absolute; top 40px; right:50px">
-  <%= button_to 'View all players', '/players#index' %>
-</div>-->
 <div id="logoutButton" style="position: absolute; top: 20px; right: 50px">
   <%= button_to 'Logout', 'logout' %>
 </div>
