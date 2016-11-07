@@ -16,6 +16,12 @@ class GoalsController < ApplicationController
   def new
     @goal = Goal.new
     @goal.game_id = params[:game_id]
+    event = Participation.where(:game_id => params[:game_id])
+    aTeam = (event.first.team_id)
+    bTeam = (event.second.team_id)
+    players = Player.where('team_id = aTeam or team_id => bTeam')
+
+    render :locals => {:players => players}
   end
 
   # GET /goals/1/edit

@@ -17,11 +17,11 @@
   </div>
   <div class="field">
     <%= f.label :rTime %><br>
-    <%= f.number_field :rTime %>
+    <%= f.select :rTime, options_for_select((1..90).to_a.map{|s| ["#{s}", s]}) %>
   </div>
   <div class="field">
     <%= f.label :player_id %><br>
-    <%= f.text_field :player_id %>
+    <%= f.collection_select :player_id, Player.all, :id, :full_name, :prompt => 'Select player' %>
   </div>
   <div class="actions">
     <%= f.submit %>
