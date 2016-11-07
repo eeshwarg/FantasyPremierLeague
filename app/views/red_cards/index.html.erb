@@ -1,26 +1,45 @@
-<h1>Listing red_cards</h1>
+<style>
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    text-align: left;
+    padding: 8px;
+
+}
+.s {
+  text-align: center;
+}
+
+tr:nth-child(even){background-color: #f2f2f2}
+tr:hover {background-color: #bcf1f2}
+</style>
+
+<h1>Listing red_cards</ class="s"h1>
 
 <table>
   <thead>
     <tr>
-      <th>Game</th>
-      <th>Rtime</th>
-      <th>Player</th>
-      <th></th>
-      <th></th>
-      <th></th>
+      <th class="s">Game</th>
+      <th class="s">Rtime</th>
+      <th class="s">Player</th>
+      <th class="s"></th>
+      <th class="s"></th>
+      <th class="s"></th>
     </tr>
   </thead>
 
   <tbody>
     <% @red_cards.each do |red_card| %>
       <tr>
-        <td><%= red_card.game %></td>
-        <td><%= red_card.rTime %></td>
-        <td><%= red_card.player %></td>
-        <td><%= link_to 'Show', red_card %></td>
-        <td><%= link_to 'Edit', edit_red_card_path(red_card) %></td>
-        <td><%= link_to 'Destroy', red_card, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td class="s"><%= red_card.game %></td>
+        <td class="s"><%= red_card.rTime %></td>
+        <td class="s"><%= red_card.player %></td>
+        <td class="s"><%= link_to 'Show', red_card %></td>
+        <td class="s"><%= link_to 'Edit', edit_red_card_path(red_card) %></td>
+        <td class="s"><%= link_to 'Destroy', red_card, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

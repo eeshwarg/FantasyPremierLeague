@@ -1,26 +1,46 @@
+<style>
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    text-align: left;
+    padding: 8px;
+
+}
+.s {
+  text-align: center;
+}
+
+tr:nth-child(even){background-color: #f2f2f2}
+tr:hover {background-color: #bcf1f2}
+</style>
+
+
 <h1>Listing teams</h1>
 
 <table>
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Homeground</th>
-      <th>Manager</th>
-      <th></th>
-      <th></th>
-      <th></th>
+      <th class="s">Name</th>
+      <th class="s">Homeground</th>
+      <th class="s">Manager</th>
+      <th class="s"></th>
+      <th class="s"></th>
+      <th class="s"></th>
     </tr>
   </thead>
 
   <tbody>
     <% @teams.each do |team| %>
       <tr>
-        <td><%= team.name %></td>
-        <td><%= team.homeGround %></td>
-        <td><%= team.manager %></td>
-        <td><%= link_to 'Show', team %></td>
-        <td><%= link_to 'Edit', edit_team_path(team) %></td>
-        <td><%= link_to 'Destroy', team, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td class="s"><%= team.name %></td>
+        <td class="s"><%= team.homeGround %></td>
+        <td class="s"><%= team.manager %></td>
+        <td class="s"><%= link_to 'Show', team %></td>
+        <td class="s"><%= link_to 'Edit', edit_team_path(team) %></td>
+        <td class="s"><%= link_to 'Destroy', team, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

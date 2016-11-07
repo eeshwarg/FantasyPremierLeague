@@ -1,19 +1,40 @@
+<style>
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    text-align: left;
+    padding: 8px;
+
+}
+.s {
+  text-align: center;
+}
+
+tr:nth-child(even){background-color: #f2f2f2}
+tr:hover {background-color: #bcf1f2}
+</style>
+
+
+
 <h1>Listing players</h1>
 
 <table>
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Position</th>
-      <th>Issuspended</th>
-      <th>Rating</th>
-      <th>Age</th>
-      <th>Value</th>
-      <th>Goals</th>
-      <th>Assists</th>
-      <th>Cleansheets</th>
-      <th>Saves</th>
-      <th>Team</th>
+      <th class="s">Name</th>
+      <th class="s">Position</th>
+      <th class="s">Issuspended</th>
+      <th class="s">Rating</th>
+      <th class="s">Age</th>
+      <th class="s">Value</th>
+      <th class="s">Goals</th>
+      <th class="s">Assists</th>
+      <th class="s">Cleansheets</th>
+      <th class="s">Saves</th>
+      <th class="s">Team</th>
       <th></th>
       <th></th>
       <th></th>
@@ -23,21 +44,21 @@
   <tbody>
     <% @players.each do |player| %>
       <tr>
-        <td><%= player.full_name %></td>
-        <td><%= player.position %></td>
-        <td><%= player.isSuspended %></td>
-        <td><%= player.rating %></td>
-        <td><%= player.age %></td>
-        <td><%= player.value %></td>
-        <td><%= player.goals %></td>
-        <td><%= player.assists %></td>
-        <td><%= player.cleanSheets %></td>
-        <td><%= player.saves %></td>
+        <td class="s"><%= player.full_name %></td>
+        <td class="s"><%= player.position %></td>
+        <td class="s"><%= player.isSuspended %></td>
+        <td class="s"><%= player.rating %></td>
+        <td class="s"><%= player.age %></td>
+        <td class="s"><%= player.value %></td>
+        <td class="s"><%= player.goals %></td>
+        <td class="s"><%= player.assists %></td>
+        <td class="s"><%= player.cleanSheets %></td>
+        <td class="s"><%= player.saves %></td>
         <% team = Team.find(player.team_id) %>
-        <td><%= team.name %></td>
-        <td><%= link_to 'Show', player %></td>
-        <td><%= link_to 'Edit', edit_player_path(player) %></td>
-        <td><%= link_to 'Destroy', player, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td class="s"><%= team.name %></td>
+        <td class="s"><%= link_to 'Show', player %></td>
+        <td class="s"><%= link_to 'Edit', edit_player_path(player) %></td>
+        <td class="s"><%= link_to 'Destroy', player, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
