@@ -7,7 +7,7 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @users = User.all
+    @users = User.order('points desc')
   end
 
   # GET /users/1
@@ -109,6 +109,7 @@ class UsersController < ApplicationController
     increased_budget = user.budget + selected_player.value
     user.update_column(:budget, increased_budget)
     own.destroy
+    redirect_to sessions_home_path
   end
 
   private

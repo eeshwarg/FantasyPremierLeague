@@ -15,5 +15,10 @@
 /log/*.log
 /tmp
 
+<<<<<<< HEAD
 app/assets/stylesheets/images/
 config/database.yml
+=======
+/config/database.yml
+app/assets/stylesheets/images/
+>>>>>>> 0e231e627fa33684e497123929cc9a4d8459b90a

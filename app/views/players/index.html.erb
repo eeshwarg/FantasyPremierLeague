@@ -35,9 +35,6 @@ tr:hover {background-color: #bcf1f2}
       <th class="s">Cleansheets</th>
       <th class="s">Saves</th>
       <th class="s">Team</th>
-      <th></th>
-      <th></th>
-      <th></th>
     </tr>
   </thead>
 
@@ -56,10 +53,7 @@ tr:hover {background-color: #bcf1f2}
         <td class="s"><%= player.saves %></td>
         <% team = Team.find(player.team_id) %>
         <td class="s"><%= team.name %></td>
-        <td class="s"><%= link_to 'Show', player %></td>
-        <td class="s"><%= link_to 'Edit', edit_player_path(player) %></td>
-        <td class="s"><%= link_to 'Destroy', player, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+        </tr>
     <% end %>
   </tbody>
 </table>

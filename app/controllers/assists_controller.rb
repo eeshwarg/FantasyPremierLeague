@@ -30,6 +30,12 @@ class AssistsController < ApplicationController
     @assist.save
     player = Player.find_by_id(@assist.player_id)
     player.assists += 1
+    owns = Ownership.where('player_id = ?',player.id)
+    owns.each do |own|
+      user = User.find(own.user_id)
+      points = user.points + 1
+      user.update_column(:points, points)
+    end
     player.save
 
     respond_to do |format|

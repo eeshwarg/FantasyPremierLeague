@@ -7,9 +7,10 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <% unless action_name=='login' or action_name=='login_attempt'%>
 <%= render 'shared/navbar'%>
 <%= render 'shared/background'%>
-
+<% end %>
 <%= yield %>
 <%= render 'logout' if User.authenticate %>
 

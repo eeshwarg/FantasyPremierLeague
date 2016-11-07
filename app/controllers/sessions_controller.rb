@@ -25,20 +25,25 @@ class SessionsController < ApplicationController
     defs = []
     mids = []
     fwds = []
+    players = []
     owns.each do |own|
       player = Player.find(own.player_id)
       case player.position
         when "GK"
           gks.append(player)
+          players.append(player)
         when "DEF"
           defs.append(player)
+          players.append(player)
         when "MID"
           mids.append(player)
+          players.append(player)
         when "FWD"
           fwds.append(player)
+          players.append(player)
       end
     end
-    render :locals => {:gks => gks, :defs => defs, :mids => mids, :fwds => fwds}
+    render :locals => {:players => players, :gks => gks, :defs => defs, :mids => mids, :fwds => fwds}
   end
 
   def profile

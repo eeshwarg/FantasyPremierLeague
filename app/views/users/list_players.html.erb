@@ -1,4 +1,24 @@
-<h1>Listing players</h1>
+<style>
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    text-align: left;
+    padding: 8px;
+
+}
+.s {
+  text-align: center;
+}
+
+tr:nth-child(even){background-color: #f2f2f2}
+tr:hover {background-color: #bcf1f2}
+</style>
+
+
+<h1>My players</h1>
 
 <table>
   <thead>
@@ -14,16 +34,13 @@
     <th>Cleansheets</th>
     <th>Saves</th>
     <th>Team</th>
-    <th></th>
-    <th></th>
-    <th></th>
   </tr>
   </thead>
 
   <tbody>
   <% players.each do |player| %>
       <tr>
-        <td><%= player.full_name %></td>
+        <td><%= link_to player.full_name, sell_player_path(:player_id => player.id), data: {confirm: "Are you sure you want to sell #{player.full_name}?"} %></td>
         <td><%= player.position %></td>
         <td><%= player.isSuspended %></td>
         <td><%= player.rating %></td>
@@ -35,14 +52,9 @@
         <td><%= player.saves %></td>
         <% team = Team.find(player.team_id) %>
         <td><%= team.name %></td>
-        <td><%= link_to 'Sell', sell_player_path(:player_id => player.id) %></td>
-        <td><%= link_to 'Edit', edit_player_path(player) %></td>
-        <td><%= link_to 'Destroy', player, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
   <% end %>
   </tbody>
 </table>
 
 <br>
-
-<%= link_to 'New Player', new_player_path %>

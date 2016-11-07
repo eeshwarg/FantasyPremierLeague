@@ -21,8 +21,11 @@
   </div>
   <div class="field">
     <%= f.label :player_id %><br>
-    <%= f.collection_select :player_id, Player.all, :id, :full_name, :prompt => 'Select player' %>
-  </div>
+    <% game = Game.find(@assist.game_id) %>
+    <% aTeam_id = game.aTeam_id %>
+    <% bTeam_id = game.bTeam_id %>
+    <% players = Player.where('team_id = ? or team_id = ?',aTeam_id,bTeam_id) %>
+    <%= f.collection_select :player_id, players, :id, :full_name, :prompt => 'Select player' %>  </div>
   <div class="actions">
     <%= f.submit %>
   </div>

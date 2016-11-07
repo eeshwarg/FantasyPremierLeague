@@ -27,6 +27,16 @@ class RedCardsController < ApplicationController
   def create
     @red_card = RedCard.new(red_card_params)
 
+    @red_card.save
+    player = Player.find_by_id(@red_card.player_id)
+    owns = Ownership.where('player_id = ?',player.id)
+    owns.each do |own|
+      user = User.find(own.user_id)
+      points = user.points - 2
+      user.update_column(:points, points)
+    end
+    player.save
+
     respond_to do |format|
       if @red_card.save
         format.html { redirect_to @red_card, notice: 'Red card was successfully created.' }
