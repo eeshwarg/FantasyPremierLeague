@@ -52,7 +52,7 @@
     </table>
     <table name="participations" schema="" catalog="FantasyPremierLeague_development" type="TABLE">
       <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
-      <column name="player_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="team_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
       <column name="game_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
       <column name="created_at" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
       <column name="updated_at" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>

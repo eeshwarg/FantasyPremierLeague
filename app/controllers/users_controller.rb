@@ -91,6 +91,26 @@ class UsersController < ApplicationController
     end
   end
 
+  def list_players
+    owns = Ownership.find_all_by_user_id(session[:user_id])
+    players = []
+    owns.each do |p|
+      player = Player.find(p.player_id)
+      players.append(player)
+    end
+    render locals: {:players => players}
+  end
+
+  def sell_player
+    selected_player = Player.find_by_id(params[:player_id])
+    player_id = params[:player_id]
+    own = Ownership.where(:player_id => player_id, :user_id => session[:user_id]).first
+    user = User.find session[:user_id]
+    increased_budget = user.budget + selected_player.value
+    user.update_column(:budget, increased_budget)
+    own.destroy
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user

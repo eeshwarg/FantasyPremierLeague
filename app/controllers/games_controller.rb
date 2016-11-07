@@ -4,7 +4,6 @@ class GamesController < ApplicationController
   # GET /games
   # GET /games.json
   def index
-    sleep 1
     @games = Game.all
   end
 
@@ -27,8 +26,18 @@ class GamesController < ApplicationController
   def create
     @game = Game.new(game_params)
 
+
+
     respond_to do |format|
       if @game.save
+        aTeam = Participation.new
+        aTeam.team_id = @game.aTeam_id
+        aTeam.game_id = @game.id
+        bTeam = Participation.new
+        bTeam.team_id = @game.bTeam_id
+        bTeam.game_id = @game.id
+        aTeam.save
+        bTeam.save
         format.html { redirect_to @game, notice: 'Game was successfully created.' }
         format.json { render action: 'show', status: :created, location: @game }
         format.js { redirect_to @game, notice: 'Game was successfully created.' }

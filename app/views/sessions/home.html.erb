@@ -190,30 +190,32 @@
   <h3>Goalkeepers</h3>
   <ul>
     <% gks.each do |p| %>
-        <li><%= link_to p.full_name, player_path(p.id) %></li>
+        <li><%= p.full_name%></li>
     <% end %>
   </ul>
 
   <h3>Defenders</h3>
   <ul>
     <% defs.each do |p| %>
-        <li><%= link_to p.full_name, player_path(p.id) %></li>
+        <li><%= p.full_name %></li>
     <% end %>
   </ul>
 
   <h3>Midfielders</h3>
   <ul>
     <% mids.each do |p| %>
-        <li><%= link_to p.full_name, player_path(p.id) %></li>
+        <li><%= p.full_name %></li>
     <% end %>
   </ul>
 
   <h3>Forwards</h3>
   <ul>
     <% fwds.each do |p| %>
-        <li><%= link_to p.full_name, player_path(p.id) %></li>
+        <li><%= p.full_name %></li>
     <% end %>
   </ul>
+
+  <%= button_to 'Sell player', list_players_path, :method => :get %>
 
   <!--<h3>Goalkeepers</h3>
   <ul>
