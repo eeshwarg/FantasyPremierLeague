@@ -8,8 +8,8 @@
 </head>
 <body>
 
+<%= render 'shared/navbar' %>
 <%= yield %>
-
 
 <%= render 'logout' if User.authenticate %>
 

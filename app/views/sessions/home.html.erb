@@ -63,7 +63,7 @@
 </head>
 <body>
 
-<h2 class='User_Header'> <%= @current_user.username%> <%= link_to "Profile", sessions_profile_path %> </h2>
+<h2 class='User_Header'> <%= @current_user.username%></h2>
 <%= flash[:notice] %>
 <ul class="tab">
   <li><a class="tablinks" onclick="openView(event, 'ListView')">List View</a></li>
