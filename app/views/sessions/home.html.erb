@@ -59,6 +59,10 @@
           border: 1px solid #ccc;
           border-top: none;
       }
+
+      #players_list_link {
+          top: 100px; right: 50px
+      }
   </style>
 </head>
 <body>
@@ -95,6 +99,9 @@
 </script>
 <div id="FieldView" class="tabcontent">
   <!--<img id = "ff" src="/images/football field.jpg" alt="Football Field Image">-->
+  <div id="players_list_link">
+  </div>
+
   <% if gks[0] %>
     <div id='gk1'> <%= gks[0].full_name %> </div>
   <% else %>
@@ -190,6 +197,8 @@
 <div id="myModal" class="modal fade" role="dialog">
 
 </div>
+
+
 
 </div>
 
