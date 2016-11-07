@@ -38,6 +38,7 @@ class User < ActiveRecord::Base
 
   def default_values
     self.budget = 1000
+    self.points = 0
   end
 
   def full_name

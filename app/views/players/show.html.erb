@@ -12,7 +12,11 @@
 
 <p>
   <strong>Is player suspended?:</strong>
-  <%= @player.isSuspended %>
+  <% if @player.isSuspended %>
+      Yes
+  <% else %>
+      No
+  <% end %>
 </p>
 
 <p>

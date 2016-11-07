@@ -16,12 +16,6 @@ class GoalsController < ApplicationController
   def new
     @goal = Goal.new
     @goal.game_id = params[:game_id]
-    event = Participation.where(:game_id => params[:game_id])
-    aTeam = (event.first.team_id)
-    bTeam = (event.second.team_id)
-    players = Player.where('team_id = aTeam or team_id => bTeam')
-
-    render :locals => {:players => players}
   end
 
   # GET /goals/1/edit
@@ -36,6 +30,12 @@ class GoalsController < ApplicationController
     @goal.save
     player = Player.find_by_id(@goal.player_id)
     player.goals += 1
+    owns = Ownership.where('player_id = ?',player.id)
+    owns.each do |own|
+      user = User.find(own.user_id)
+      points = user.points + 2
+      user.update_column(:points, points)
+    end
     player.save
 
     respond_to do |format|

@@ -68,6 +68,7 @@
 <body>
 
 <h2 class='User_Header'> <%= @current_user.username%> <%= link_to "Profile", sessions_profile_path %> </h2>
+<%= link_to 'Leaderboard', users_path %>
 <%= flash[:notice] %>
 <ul class="tab">
   <li><a class="tablinks" onclick="openView(event, 'ListView')">List View</a></li>
@@ -203,8 +204,44 @@
 </div>
 
 <div id="ListView" class="tabcontent">
+  <table>
+    <thead>
+    <tr>
+      <th>Name</th>
+      <th>Position</th>
+      <th>Issuspended</th>
+      <th>Rating</th>
+      <th>Age</th>
+      <th>Value</th>
+      <th>Goals</th>
+      <th>Assists</th>
+      <th>Cleansheets</th>
+      <th>Saves</th>
+      <th>Team</th>
+    </tr>
+    </thead>
 
-  <h3>Goalkeepers</h3>
+    <tbody>
+    <% players.each do |player| %>
+        <tr>
+          <td><%= player.full_name %></td>
+          <td><%= player.position %></td>
+          <td><%= player.isSuspended %></td>
+          <td><%= player.rating %></td>
+          <td><%= player.age %></td>
+          <td><%= player.value %></td>
+          <td><%= player.goals %></td>
+          <td><%= player.assists %></td>
+          <td><%= player.cleanSheets %></td>
+          <td><%= player.saves %></td>
+          <% team = Team.find(player.team_id) %>
+          <td><%= team.name %></td>
+        </tr>
+    <% end %>
+    </tbody>
+  </table>
+
+  <!--<h3>Goalkeepers</h3>
   <ul>
     <% gks.each do |p| %>
         <li><%= p.full_name%></li>
@@ -230,7 +267,7 @@
     <% fwds.each do |p| %>
         <li><%= p.full_name %></li>
     <% end %>
-  </ul>
+  </ul>-->
 
   <%= button_to 'Sell player', list_players_path, :method => :get %>
 

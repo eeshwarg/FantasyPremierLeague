@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161015180113) do
+ActiveRecord::Schema.define(version: 20161107165533) do
 
   create_table "assists", force: true do |t|
     t.integer  "game_id"
@@ -56,7 +56,7 @@ ActiveRecord::Schema.define(version: 20161015180113) do
   end
 
   create_table "participations", force: true do |t|
-    t.integer  "player_id"
+    t.integer  "team_id"
     t.integer  "game_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -125,6 +125,7 @@ ActiveRecord::Schema.define(version: 20161015180113) do
     t.string   "salt"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "points"
   end
 
 end

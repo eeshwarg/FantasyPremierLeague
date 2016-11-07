@@ -3,17 +3,8 @@
 <table>
   <thead>
     <tr>
-      <th>Fname</th>
-      <th>Lname</th>
-      <th>Username</th>
-      <th>Password</th>
-      <th>Gender</th>
-      <th>Dob</th>
-      <th>Age</th>
-      <th>Budget</th>
-      <th>Email</th>
-      <th>Favclub</th>
-      <th></th>
+      <th>User name</th>
+      <th>Points</th>
       <th></th>
       <th></th>
     </tr>
@@ -22,19 +13,8 @@
   <tbody>
     <% @users.each do |user| %>
       <tr>
-        <td><%= user.fName %></td>
-        <td><%= user.lName %></td>
         <td><%= user.username %></td>
-        <td><%= user.password %></td>
-        <td><%= user.gender %></td>
-        <td><%= user.dob %></td>
-        <td><%= user.age %></td>
-        <td><%= user.budget %></td>
-        <td><%= user.email %></td>
-        <td><%= user.favClub %></td>
-        <td><%= link_to 'Show', user %></td>
-        <td><%= link_to 'Edit', edit_user_path(user) %></td>
-        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= user.points %></td>
       </tr>
     <% end %>
   </tbody>
@@ -42,4 +22,3 @@
 
 <br>
 
-<%= link_to 'New User', new_user_path %>
