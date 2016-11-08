@@ -190,7 +190,7 @@
    <% if fwds[2] %>
         <div id='fwd3'> <%= fwds[2].full_name %> </div>
           <% else %>
-            <div id="fwd3"> <%= button_to 'Add forward', fetch_players_path(:position => :GK), remote: true, 'data-toggle' =>  "modal", 'data-target' => '#myModal', :method => :get %></div>
+            <div id="fwd3"> <%= button_to 'Add forward', fetch_players_path(:position => :FWD), remote: true, 'data-toggle' =>  "modal", 'data-target' => '#myModal', :method => :get %></div>
           <% end %>
 <!-- Trigger the modal with a button -->
 
