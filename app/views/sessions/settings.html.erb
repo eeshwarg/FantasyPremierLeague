@@ -42,4 +42,7 @@
     <div class="actions">
       <%= f.submit 'Update profile' %>
     </div>
+    <div id="logoutButton" style="position: absolute; top: 18px; right: 150px;">
+      <%= link_to 'Logout', 'logout', :method => :post %>
+    </div>
 <% end %>
