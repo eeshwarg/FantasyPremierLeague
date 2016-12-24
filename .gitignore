@@ -15,6 +15,9 @@
 /log/*.log
 /tmp
 
+# Ignore Python files used for fetching players' information to be added to the database
+/venvPython
+
 <<<<<<< HEAD
 app/assets/stylesheets/images/
 config/database.yml

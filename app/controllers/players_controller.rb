@@ -66,7 +66,7 @@ class PlayersController < ApplicationController
   end
 
   def fetch_players
-    @selected = Player.where(:position => params[:position])
+    @selected = Player.where(:position => params[:position]).order('rating desc')
     respond_to do |format|
       format.html
       format.js

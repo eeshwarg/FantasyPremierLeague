@@ -7,7 +7,7 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <% unless action_name=='login' or action_name=='login_attempt'%>
+  <% unless action_name=='login' or action_name=='login_attempt' or action_name=='new'%>
 <%= render 'shared/navbar'%>
 <%= render 'shared/background'%>
 <% end %>
